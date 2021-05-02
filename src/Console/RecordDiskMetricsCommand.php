@@ -14,7 +14,7 @@ class RecordDiskMetricsCommand extends Command
 
     public function handle()
     {
-        $this->comment('Command begin ...');
+        $this->comment('Recording metrics...');
 
         collect(config('disk-monitor.disk_names'))
             ->each(fn(string $diskName) => $this->recordDiskEntry($diskName));
@@ -24,7 +24,7 @@ class RecordDiskMetricsCommand extends Command
 
     protected function recordDiskEntry(string $diskName): void
     {
-        $this->info("Recording metrics for disk `{$diskName}`..");
+        $this->info("Recording metrics for disk `{$diskName}`...");
 
         $disk = Storage::disk($diskName);
 

@@ -14,10 +14,30 @@ You can install the package via composer:
 composer require kenyalang/laravel-disk-monitor
 ```
 
+You can publish and run the migrations with:
+
+```bash
+php artisan vendor:publish --provider="Kenyalang\DiskMonitor\DiskMonitorServiceProvider" --tag="disk-monitor-migrations"
+php artisan migrate
+```
+
+You can publish the config file with:
+```bash
+php artisan vendor:publish --provider="Kenyalang\DiskMonitor\DiskMonitorServiceProvider" --tag="disk-monitor-config"
+```
+
 ## Usage
 
+Change the disk name in the config file to the desired disk
+
 ```php
-// Usage description here
+// config/disk-monitor.php
+
+return [
+    'disk_name' => [
+        'local'
+    ]
+];
 ```
 
 ### Testing
@@ -41,12 +61,7 @@ If you discover any security related issues, please email ariev.scalia@gmail.com
 ## Credits
 
 -   [Scalia Abel](https://github.com/kenyalang)
--   [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
